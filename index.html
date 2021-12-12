@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>剪映 Pro 字幕导出工具 | 诚意塾</title>
+</head>
+
+<body>
+    <p>安卓目录：/data/data/com.lemon.lv/files/newdrafts/</p>
+    <p>Mac目录：~/Movies/JianyingPro/User Data/Projects/com.lveditor.draft/</p>
+    <p>Windows目录：C:\Users\Administrator\AppData\Local\JianyingPro\User Data\Projects\com.lveditor.draft\</p>
+    <p>
+        <label>设置换行符：
+            <select onchange="onRNChange(this.value)">
+                <option value="rn">\r\n （Windows）</option>
+                <option value="n">\n （Linux）</option>
+            </select>
+            <span id="rn-hint" style="color: red;display: none"> ** 修改后需要重新生成</span>
+        </label>
+    </p>
+    <p>
+        <label>选择时间单位：
+            <select onchange="onTimeUnitChange(this.value)">
+                <option value="milli">毫秒</option>
+                <option value="micro">微秒</option>
+            </select>
+            <br>
+            <small id="time-unit-hint">一般情况Windows是微秒，安卓是毫秒，如果时间不正常，可根据实际情况自行选择</small>
+            <small id="time-unit-reapply-hint" style="color: red;display: none">修改后需要重新生成</small>
+        </label>
+    </p>
+    <h4>输入JSON</h4>
+    <div>
+        <textarea id="input-text" cols="60"
+            rows="15">{"platform": {"os": ""},"materials":{"texts":[{"content":"轨道一文本","id":
+        "28824EDA-D841-4c81-B264-DC268957660B","type":"text"},{"content":"轨道二文本","id":"A4637647-EF07-418c-B2A4-6781EC9B6003",
+        "type":"text"}]},"tracks":[{"id":"A891C42E-A9F6-41fa-89E4-5DD250F2D7D1","segments":[{"id":"624A1A67-15F8-499b-BDF4-0C949FFB383A",
+        "material_id":"28824EDA-D841-4c81-B264-DC268957660B","target_timerange":{"duration":3000000,"start":0}}],"type":"text"},
+        {"id":"45336909-80D9-4320-93C2-1737989C45FC","segments":[{"id":"7729B6F5-8C3D-46ee-A0F4-3D3FC5B82823","material_id":
+        "A4637647-EF07-418c-B2A4-6781EC9B6003","target_timerange":{"duration":3000000,"start":2652233000}}],"type":"text"}]}</textarea>
+        <br>
+        <button type="button" onclick="onGenerateClick()">生成SRT文件</button>
+        <button type="button" onclick="onClearClick()">清空</button>
+    </div>
+    <h4>输出SRT</h4>
+    <script src="js/common.js"></script>
+</body>
+
+</html>
